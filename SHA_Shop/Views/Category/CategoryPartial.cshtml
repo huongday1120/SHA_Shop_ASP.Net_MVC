@@ -1,0 +1,15 @@
+﻿@using SHA_Shop.Models
+@model List<DANHMUC>
+
+<ul>
+    @{
+        foreach (var item in Model)
+        {
+            <li>
+                @Html.ActionLink(@item.TenDM, "Index", "Product", new { page = 1, category = @item.MaDM }, null)
+            </li>
+        }
+    }
+</ul>
+
+

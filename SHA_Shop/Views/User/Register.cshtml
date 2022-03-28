@@ -1,0 +1,115 @@
+﻿@model SHA_Shop.Models.NGUOIDUNG
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Đăng ký</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/Assets/user/css/User.css" rel="stylesheet" />
+    <link href="~/Assets/user/css/sb-admin-2.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gradient-primary">
+
+    <style>
+        form.user .form-control-user, .btn.btn-primary.btn-user.btn-block, .small {
+            font-size: 1rem;
+        }
+        .img-left {
+            background-image: url(https://scontent-sin6-2.xx.fbcdn.net/v/t1.15752-9/72739091_502461843937781_2917077654991536128_n.png?_nc_cat=108&ccb=2&_nc_sid=ae9488&_nc_ohc=oiuXGY6DcsoAX-vRZib&_nc_ht=scontent-sin6-2.xx&oh=2586b78f19f1fd88f4214312d64dacaa&oe=60320E2F);
+        }
+    </style>
+
+    <div class="container">
+        <div class="row px-4">
+            <div class="col-lg-10 col-lg-9 card flex-row mx-auto px-0" style="margin-top: 50px">
+                <div class="img-left d-none d-md-flex"></div>
+                <div class="card-body">
+                    <h3 class="title text-center mt-4 text-gray-900 font-weight-bold mb-4">
+                        Đăng ký
+                    </h3>
+                    @using (Html.BeginForm("Register", "User", FormMethod.Post, new { @class = "user" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                @Html.TextBoxFor(x => x.Ten, new { @class = "form-control form-control-user", @placeholder = "Họ Tên" })
+                                @Html.ValidationMessageFor(m => m.Ten, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.TextBoxFor(x => x.TaiKhoan, new { @class = "form-control form-control-user", @placeholder = "Tài khoản" })
+                                @Html.ValidationMessageFor(m => m.TaiKhoan, "", new { @class = "text-danger" })
+                                @if (ViewBag.error != null)
+                                {
+                                    <span class="text-danger">@ViewBag.error</span>
+                                }
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(x => x.Email, new { @class = "form-control form-control-user", @placeholder = "Email" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            @if (ViewBag.error1 != null)
+                            {
+                                <span class="text-danger">@ViewBag.error1</span>
+                            }
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                @Html.PasswordFor(x => x.MatKhau, new { @class = "form-control form-control-user", @placeholder = "Mật khẩu" })
+                                @Html.ValidationMessageFor(m => m.MatKhau, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.PasswordFor(x => x.NhapLaiMatKhau, new { @class = "form-control form-control-user", @placeholder = "Nhập lại mật khẩu" })
+                                @Html.ValidationMessageFor(m => m.NhapLaiMatKhau, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(x => x.DiaChi, new { @class = "form-control form-control-user", @placeholder = "Địa chỉ" })
+                            @Html.ValidationMessageFor(m => m.DiaChi, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(x => x.SDT, new { @class = "form-control form-control-user", @placeholder = "Số điện thoại" })
+                            @Html.ValidationMessageFor(m => m.SDT, "", new { @class = "text-danger" })
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                            Đăng ký
+                        </button>
+                    }
+                    <hr>
+                    <div class="text-center">
+                        <p>Bạn đã có tài khoản? <a class="small" href="/User/Login">Đăng nhập!</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Content/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/Content/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/Content/assets/js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>
